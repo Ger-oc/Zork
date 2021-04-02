@@ -4,6 +4,7 @@
 using namespace std;
 #include "ZorkUL.h"
 
+string creators = "Marle + Gerard";
 
 int main()
 {
@@ -16,35 +17,52 @@ ZorkUL::ZorkUL() {
     createRooms();
 }
 
-void ZorkUL::createRooms() {
-    Room* a, * b, * c, * d, * e, * f, * g, * h, * i;
 
-    a = new Room("a");
-    a->addItem(new Item("x", 1, 11));
-    a->addItem(new Item("y", 2, 22));
-    b = new Room("b");
-    b->addItem(new Item("xx", 3, 33));
-    b->addItem(new Item("yy", 4, 44));
-    c = new Room("c");
-    d = new Room("d");
-    e = new Room("e");
-    f = new Room("f");
-    g = new Room("g");
-    h = new Room("h");
-    i = new Room("i");
+void ZorkUL::createRooms() {
+    Room* hall, * bathroom, * bedroom, * office, * extra;
+
+    hall = new Room("hallway");
+    hall->addItem(new Item("umbrella stand,", 1, 11));
+    hall->addItem(new Item("bust,", 2, 22));
+    hall->addItem(new Item("book case,", 2, 22));
+    hall->addItem(new Item("lamp,", 2, 22));
+    hall->addItem(new Item("grandfather clock.", 2, 22));
+
+    bathroom = new Room("bathroom");
+    bathroom->addItem(new Item("toilet,", 3, 33));
+    bathroom->addItem(new Item("gold bidet,", 4, 44));
+    bathroom->addItem(new Item("mirror,", 4, 44));
+    bathroom->addItem(new Item("vanity,", 4, 44));
+    bathroom->addItem(new Item("shower,", 4, 44));
+    bathroom->addItem(new Item("wall switch,", 4, 44));
+    bathroom->addItem(new Item("pull cord.", 4, 44));
+
+    bedroom = new Room("bedroom");
+    bedroom->addItem( new Item("bed,", 3, 12));
+    bedroom->addItem( new Item("closet,", 3, 12));
+    bedroom->addItem( new Item("big painting,", 3, 12));
+    bedroom->addItem( new Item("globe bar,", 3, 12));
+    bedroom->addItem( new Item("cabinet,", 3, 12));
+
+    office = new Room("office");
+    office->addItem( new Item("Gold Buddha.", 999, 999));
+
+    extra = new Room("e");
+    extra->addItem(new Item("noting", 3, 3));
+
 
     //             (N, E, S, W)
-    a->setExits(f, b, d, c);
-    b->setExits(NULL, NULL, NULL, a);
-    c->setExits(NULL, a, NULL, NULL);
-    d->setExits(a, e, NULL, i);
-    e->setExits(NULL, NULL, NULL, d);
-    f->setExits(NULL, g, a, h);
+    hall->setExits(office, bathroom,NULL , bedroom);
+    bathroom->setExits(NULL, NULL, hall, NULL);
+    bedroom->setExits(NULL, NULL, hall, NULL);
+    office->setExits(NULL, NULL, hall, NULL);
+    extra->setExits(NULL, NULL, NULL, NULL);
+    /*f->setExits(NULL, g, a, h);
     g->setExits(NULL, NULL, NULL, f);
     h->setExits(NULL, f, NULL, NULL);
-    i->setExits(NULL, d, NULL, NULL);
+    i->setExits(NULL, d, NULL, NULL);*/
 
-    currentRoom = a;
+    currentRoom = hall;
 }
 
 /**
@@ -94,13 +112,10 @@ bool ZorkUL::processCommand(Command command) {
 
     else if (commandWord.compare("map") == 0)
     {
-        cout << "[h] --- [f] --- [g]" << endl;
-        cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "[c] --- [a] --- [b]" << endl;
-        cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "[i] --- [d] --- [e]" << endl;
+        cout << "              [Office]                 " << endl;
+        cout << "                  |                    " << endl;
+        cout << "                  |                    " << endl;
+        cout << "[Bedroom] --- [Hallway] --- [Bathroom] " << endl;
     }
 
     else if (commandWord.compare("go") == 0)
@@ -126,12 +141,12 @@ bool ZorkUL::processCommand(Command command) {
     }
 
     else if (commandWord.compare("put") == 0)
-    {
 
-    }
-        /*
+
+
+
         {
-        if (!command.hasSecondWord()) {
+       /* if (!command.hasSecondWord()) {
             cout << "incomplete input"<< endl;
             }
             else
@@ -139,8 +154,8 @@ bool ZorkUL::processCommand(Command command) {
                 cout << "you're adding " + command.getSecondWord() << endl;
                 itemsInRoom.push_Back;
             }
-        }
-    */
+        }/*
+
     else if (commandWord.compare("quit") == 0) {
         if (command.hasSecondWord())
             cout << "overdefined input" << endl;

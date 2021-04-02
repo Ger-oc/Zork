@@ -44,3 +44,9 @@ string Item::getLongDescription()
 {
     return " item(s), " + description + ".\n";
 }
+
+/*void Item::itemsInRoom()
+{
+
+
+}*/

@@ -6,15 +6,18 @@ Room::Room(string description) {
     this->description = description;
 }
 
-void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
-    if (north != NULL)
-        exits["north"] = north;
-    if (east != NULL)
-        exits["east"] = east;
-    if (south != NULL)
-        exits["south"] = south;
-    if (west != NULL)
-        exits["west"] = west;
+int doorCode = 8521;
+int& officeCode = doorCode;
+
+void Room::setExits(Room *office, Room *bathroom, Room *hall, Room *bedroom) {
+    if (office != NULL)
+        exits["office"] = office;
+    if (bathroom != NULL)
+        exits["bathroom"] = bathroom;
+    if (hall != NULL)
+        exits["hall"] = hall;
+    if (bedroom != NULL)
+        exits["bedroom"] = bedroom;
 }
 
 string Room::shortDescription() {
@@ -50,6 +53,9 @@ void Room::addItem(Item *inItem) {
 string Room::displayItem() {
     string tempString = "items in room = ";
     int sizeItems = (itemsInRoom.size());
+
+    //if(Room* bathroom)
+
     if (itemsInRoom.size() < 1) {
         tempString = "no items in room";
     }
