@@ -14,10 +14,12 @@ class Inventory {
 
 private:
     static vector<string> validItems;
+    vector<string> ItemsOnPerson;
 
 
 public:
     Inventory();
+
 };
 
 
