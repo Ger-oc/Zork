@@ -7,6 +7,10 @@
 
 #include <vector>
 #include <string>
+#include <array>
+#include <iostream>
+
+
 
 using namespace std;
 
@@ -19,7 +23,8 @@ private:
 
 public:
     Inventory();
-
+    string takeItem(string item);
+    void itemsList(int *items, int sizeofArray);
 };
 
 
