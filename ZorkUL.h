@@ -3,7 +3,10 @@
 
 #include "Command.h"
 #include "Parser.h"
-#include "Room.h"
+#include "Bathroom.h"
+#include "Hallway.h"
+#include "Office.h"
+#include "Bedroom.h"
 #include "item.h"
 #include <iostream>
 #include <string>

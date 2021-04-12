@@ -3,6 +3,10 @@
 
 using namespace std;
 #include "ZorkUL.h"
+#include "Bathroom.h"
+#include "Bedroom.h"
+#include "Office.h"
+#include "Hallway.h"
 
 string creators = "Marle + Gerard";
 
@@ -10,6 +14,7 @@ int main()
 {
     ZorkUL temp;
     temp.play();
+
     return 0;
 }
 
@@ -19,9 +24,11 @@ ZorkUL::ZorkUL() {
 
 
 void ZorkUL::createRooms() {
+
+    Bedroom obj;
     Room* hall, * bathroom, * bedroom, * office, * extra;
 
-    hall = new Room("hallway");
+    hall = new Room("Hallway");
     hall->addItem(new Item("umbrella stand,", 1, 11));
     hall->addItem(new Item("bust,", 2, 22));
     hall->addItem(new Item("book case,", 2, 22));

@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include "item.h"
+
+
 using namespace std;
 using std::vector;
 
@@ -18,6 +20,7 @@ private:
 
 
 public:
+    Room();
     int numberOfItems();
     Room(string description);
     void setExits(Room *north, Room *east, Room *south, Room *west);
