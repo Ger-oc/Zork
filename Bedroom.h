@@ -1,3 +1,7 @@
+#ifndef Bedroom_H_
+#define Bedroom_H_
+
+
 #include <iostream>
 #include "Room.h"
 
@@ -8,3 +12,6 @@ class Bedroom : public Room {
 public:
 	Bedroom();
 };
+
+
+#endif

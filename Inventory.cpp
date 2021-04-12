@@ -28,7 +28,7 @@ Inventory::Inventory() {
         validItems.push_back("screwdriver"); // to remove mirror
         validItems.push_back("toothbrush");  // from bathroom vanity useless
         validItems.push_back("razor"); // from bathroom vanity useless
-        validItems.push_back(""); //
+        validItems.push_back("");      //
 
     }
 }

@@ -1,20 +1,17 @@
-//
-// Created by spike on 12/04/2021.
-//
-#include "ZorkUL.h"
-#include "Room.h"
-#include "Bathroom.h"
-#include "Bedroom.h"
-#include "Office.h"
-#include "Hallway.h"
 
-int main()
+#include <iostream>
+
+using namespace std;
+#include "ZorkUL.h"
+
+string creators = "Marle + Gerard";
+
+/*int main()
 {
     ZorkUL temp;
     temp.play();
-
     return 0;
-}
+}*/
 
 ZorkUL::ZorkUL() {
     createRooms();
@@ -22,12 +19,9 @@ ZorkUL::ZorkUL() {
 
 
 void ZorkUL::createRooms() {
-
-   Bedroom obj1;
-
     Room* hall, * bathroom, * bedroom, * office, * extra;
 
-    hall = new Room("Hallway");
+    hall = new Room("hallway");
     hall->addItem(new Item("umbrella stand,", 1, 11));
     hall->addItem(new Item("bust,", 2, 22));
     hall->addItem(new Item("book case,", 2, 22));
@@ -42,6 +36,7 @@ void ZorkUL::createRooms() {
     bathroom->addItem(new Item("shower,", 4, 44));
     bathroom->addItem(new Item("wall switch,", 4, 44));
     bathroom->addItem(new Item("pull cord.", 4, 44));
+    bathroom->addItem(new Item("toothbrush.", 4, 44));
 
     bedroom = new Room("bedroom");
     bedroom->addItem( new Item("bed,", 3, 12));
