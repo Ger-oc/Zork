@@ -1,3 +1,7 @@
+//
+// Created by spike on 13/04/2021.
+//
+
 
 #include <iostream>
 
@@ -146,22 +150,22 @@ bool ZorkUL::processCommand(Command command) {
 
 
 
-        {
-       /* if (!command.hasSecondWord()) {
-            cout << "incomplete input"<< endl;
-            }
-            else
-                if (command.hasSecondWord()) {
-                cout << "you're adding " + command.getSecondWord() << endl;
-                itemsInRoom.push_Back;
-            }
-        }/*
+    {
+        /* if (!command.hasSecondWord()) {
+             cout << "incomplete input"<< endl;
+             }
+             else
+                 if (command.hasSecondWord()) {
+                 cout << "you're adding " + command.getSecondWord() << endl;
+                 itemsInRoom.push_Back;
+             }
+         }/*
 
-    else if (commandWord.compare("quit") == 0) {
-        if (command.hasSecondWord())
-            cout << "overdefined input" << endl;
-        else
-            return true; /**signal to quit*/
+     else if (commandWord.compare("quit") == 0) {
+         if (command.hasSecondWord())
+             cout << "overdefined input" << endl;
+         else
+             return true; /**signal to quit*/
     }
     return false;
 }
@@ -195,11 +199,10 @@ string ZorkUL::go(string direction) {
     //Make the direction lowercase
     //transform(direction.begin(), direction.end(), direction.begin(),:: tolower);
     //Move to the next room
-    Room* nextRoom = currentRoom->nextRoom(direction);
+    Room *nextRoom = currentRoom->nextRoom(direction);
     if (nextRoom == NULL)
-        return("direction null");
-    else
-    {
+        return ("direction null");
+    else {
         currentRoom = nextRoom;
         return currentRoom->longDescription();
     }
