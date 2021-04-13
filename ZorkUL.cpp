@@ -7,15 +7,10 @@
 
 using namespace std;
 #include "ZorkUL.h"
+#include "Room.h"
+#include "item.h"
 
 string creators = "Marle + Gerard";
-
-/*int main()
-{
-    ZorkUL temp;
-    temp.play();
-    return 0;
-}*/
 
 ZorkUL::ZorkUL() {
     createRooms();
@@ -26,34 +21,35 @@ void ZorkUL::createRooms() {
     Room* hall, * bathroom, * bedroom, * office, * extra;
 
     hall = new Room("hallway");
-    hall->addItem(new Item("umbrella stand,", 1, 11));
-    hall->addItem(new Item("bust,", 2, 22));
-    hall->addItem(new Item("book case,", 2, 22));
-    hall->addItem(new Item("lamp,", 2, 22));
-    hall->addItem(new Item("grandfather clock.", 2, 22));
+    hall->numberOfItems();
+    hall->addItem(new Item("umbrella stand,",1,1.0 ));
+    hall->addItem(new Item("bust,",2,2.0));
+    hall->addItem(new Item("book case,",3,3.0));
+    hall->addItem(new Item("lamp,",4,4.0));
+    hall->addItem(new Item("grandfather clock.",5,5.0));
 
     bathroom = new Room("bathroom");
-    bathroom->addItem(new Item("toilet,", 3, 33));
-    bathroom->addItem(new Item("gold bidet,", 4, 44));
-    bathroom->addItem(new Item("mirror,", 4, 44));
-    bathroom->addItem(new Item("vanity,", 4, 44));
-    bathroom->addItem(new Item("shower,", 4, 44));
-    bathroom->addItem(new Item("wall switch,", 4, 44));
-    bathroom->addItem(new Item("pull cord.", 4, 44));
-    bathroom->addItem(new Item("toothbrush.", 4, 44));
+    bathroom->addItem(new Item("toilet,"));
+    bathroom->addItem(new Item("gold bidet,"));
+    bathroom->addItem(new Item("mirror,"));
+    bathroom->addItem(new Item("vanity,"));
+    bathroom->addItem(new Item("shower,"));
+    bathroom->addItem(new Item("wall switch,"));
+    bathroom->addItem(new Item("pull cord."));
+    bathroom->addItem(new Item("toothbrush."));
 
     bedroom = new Room("bedroom");
-    bedroom->addItem( new Item("bed,", 3, 12));
-    bedroom->addItem( new Item("closet,", 3, 12));
-    bedroom->addItem( new Item("big painting,", 3, 12));
-    bedroom->addItem( new Item("globe bar,", 3, 12));
-    bedroom->addItem( new Item("cabinet,", 3, 12));
+    bedroom->addItem( new Item("bed,"));
+    bedroom->addItem( new Item("closet,"));
+    bedroom->addItem( new Item("big painting,"));
+    bedroom->addItem( new Item("globe bar,"));
+    bedroom->addItem( new Item("cabinet,"));
 
     office = new Room("office");
-    office->addItem( new Item("Gold Buddha.", 999, 999));
+    office->addItem( new Item("Gold Buddha."));
 
     extra = new Room("e");
-    extra->addItem(new Item("noting", 3, 3));
+    extra->addItem(new Item("noting"));
 
 
     //             (N, E, S, W)
@@ -74,6 +70,7 @@ void ZorkUL::createRooms() {
  *  Main play routine.  Loops until end of play.
  */
 void ZorkUL::play() {
+//    Bedroom obj;
     printWelcome();
 
     // Enter the main command loop.  Here we repeatedly read commands and
@@ -134,12 +131,14 @@ bool ZorkUL::processCommand(Command command) {
         else
         if (command.hasSecondWord()) {
             cout << "you're trying to take " + command.getSecondWord() << endl;
-            int location = currentRoom->isItemInRoom(command.getSecondWord());
-            if (location < 0)
-                cout << "item is not in room" << endl;
+            //int location = currentRoom->isItemInRoom(command.getSecondWord());
+            if (currentRoom->shortDescription() == "hall"){
+
+            }
+
             else
-                cout << "item is in room" << endl;
-            cout << "index number " << +location << endl;
+                cout << "item is not in room" << endl;
+            //cout << "index number " << +location << endl;
             cout << endl;
             cout << currentRoom->longDescription() << endl;
         }

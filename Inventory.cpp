@@ -10,6 +10,7 @@
 vector<string> ItemsOnPerson;
 vector<string> Inventory::validItems;
 string items[15];
+int count = 1;
 
 Inventory::Inventory() {
 // this creates the list of valid items a person can have on them
@@ -33,14 +34,11 @@ Inventory::Inventory() {
     }
 }
 
-/*string Inventory::takeItem(string item){
+/*string takeItem(string item){
+    if ()
 
-
-
-
-}*/
-
-
+}
+*/
 void Inventory::itemsList(int items[], int sizeofArray){
 
     for (int x = 0 ; x < sizeofArray; x++){

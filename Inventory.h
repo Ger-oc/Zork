@@ -25,6 +25,7 @@ public:
     Inventory();
     string takeItem(string item);
     void itemsList(int *items, int sizeofArray);
+
 };
 
 

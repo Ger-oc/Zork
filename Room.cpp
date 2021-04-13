@@ -53,7 +53,6 @@ string Room::displayItem() {
     string tempString = "items in room = ";
     int sizeItems = (itemsInRoom.size());
 
-    //if(Room* bathroom)
 
     if (itemsInRoom.size() < 1) {
         tempString = "no items in room";
@@ -91,5 +90,9 @@ int Room::isItemInRoom(string inString)
         }
     }
     return -1;
+}
+
+void Room::removeItemFromRoom(int location) {
+    // create the destructor here, so when an item is picked up its gone form the room.
 }
 

@@ -1,11 +1,16 @@
 #include "item.h"
+#include <array>
+string hall[3] = {"lamp", "bust", "umbrella"};
 
+// hall 1-100  bathroom 101-200 bedroom 201-300 office 301 -400
 Item::Item (string inDescription, int inWeightGrams, float inValue/**, int weaponCheck*/) {
     description = inDescription;
     setWeight(inWeightGrams);
     value = inValue;
     /**weaponCheck(isWeapon);*/
-}
+   }
+
+
 
 Item::Item(string inDescription) {
     description = inDescription;
@@ -27,13 +32,13 @@ void Item::setValue(float inValue)
         value = inValue;
 }
 
-/**void Item::setWeaponCheck(int isWeapon)
+void Item::setWeaponCheck(int isWeapon)
 {
     if(isWeapon > 0 || isWeapon < 0)
         cout << "Item not a weapon" ;
     else
         cout << "Item is a weapon" ;
-}*/
+}
 
 string Item::getShortDescription()
 {
@@ -45,8 +50,7 @@ string Item::getLongDescription()
     return " item(s), " + description + ".\n";
 }
 
-/*void Item::itemsInRoom()
-{
+float Item::getValue() {
+    return 0;
+}
 
-
-}*/
