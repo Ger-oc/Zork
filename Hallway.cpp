@@ -5,5 +5,7 @@ using namespace std;
 
 
 Hallway::Hallway() {
-	cout << "This is a Hallway" << endl;
+	//cout << "This is a Hallway" << endl;
+
+
 }

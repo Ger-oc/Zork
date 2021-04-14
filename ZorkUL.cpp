@@ -18,9 +18,14 @@ ZorkUL::ZorkUL() {
 
 
 void ZorkUL::createRooms() {
-    Room* hall, * bathroom, * bedroom, * office, * extra;
+    Room *hall , * bathroom, * bedroom, * office, * extra;
 
-    hall = new Room("hallway");
+/*    Room hallway;
+    hallway.shortDescription();
+    hallway.numberOfItems();
+    hallway.setExits(office, bathroom, NULL, bedroom);
+    hallway.addItem((Item*)("lamp"));
+   */ hall = new Room("hallway");
     hall->numberOfItems();
     hall->addItem(new Item("umbrella stand,",1,1.0 ));
     hall->addItem(new Item("bust,",2,2.0));
@@ -57,7 +62,7 @@ void ZorkUL::createRooms() {
     bathroom->setExits(NULL, NULL, hall, NULL);
     bedroom->setExits(NULL, NULL, hall, NULL);
     office->setExits(NULL, NULL, hall, NULL);
-    extra->setExits(NULL, NULL, NULL, NULL);
+  //  extra->setExits(NULL, NULL, NULL, NULL);
     /*f->setExits(NULL, g, a, h);
     g->setExits(NULL, NULL, NULL, f);
     h->setExits(NULL, f, NULL, NULL);
@@ -133,7 +138,15 @@ bool ZorkUL::processCommand(Command command) {
             cout << "you're trying to take " + command.getSecondWord() << endl;
             //int location = currentRoom->isItemInRoom(command.getSecondWord());
             if (currentRoom->shortDescription() == "hall"){
+             /*   for(int x = 0; x < 6; x++){
+                    if(&itemsInRoom[x] == command.getSecondWord()){
+                        addItemToInventory();
+                    }
+                }
 
+                deletItem();
+
+*/
             }
 
             else
@@ -206,3 +219,14 @@ string ZorkUL::go(string direction) {
         return currentRoom->longDescription();
     }
 }
+
+void ZorkUL::deletItem() {
+
+
+}
+
+/*void ZorkUL::addItemToInventory(string theItem) {
+    itemsinInventory.push_back(theItem);
+
+
+}*/

@@ -92,7 +92,13 @@ int Room::isItemInRoom(string inString)
     return -1;
 }
 
-void Room::removeItemFromRoom(int location) {
-    // create the destructor here, so when an item is picked up its gone form the room.
-}
 
+void  Room::removeItemFromRoom(int location){
+    int n=itemsInRoom.size();
+    if(location>=1&&location<=n){
+        itemsInRoom.erase(itemsInRoom.begin()+(location-1));
+    }
+    else{
+        cout<<"no item in this position"<<endl;
+    }
+}

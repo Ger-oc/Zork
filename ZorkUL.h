@@ -12,7 +12,8 @@
 #include <string>
 using namespace std;
 
-class ZorkUL {
+class ZorkUL  {
+    friend class Room;
 private:
     Parser parser;
     Room *currentRoom;
@@ -23,11 +24,15 @@ private:
     void goRoom(Command command);
     void createItems();
     void displayItems();
+    void deletItem();
 
 public:
     ZorkUL();
     void play();
     string go(string direction);
+
+
+    void addItemToInventory();
 };
 
 #endif /*ZORKUL_H_*/
