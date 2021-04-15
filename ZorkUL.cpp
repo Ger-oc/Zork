@@ -12,8 +12,10 @@ using namespace std;
 #include "Office.h"
 #include "Hallway.h"
 #include "item.h"
+#include "Date.h"
 
 string creators = "Marle + Gerard, creators of this amazing zork game!";
+Date timeNow;
 
 ZorkUL::ZorkUL() {
     createRooms();
@@ -103,6 +105,7 @@ void ZorkUL::play() {
 
 void ZorkUL::printWelcome() {
     cout << creators << endl;
+    timeNow.date;
     cout << "start" << endl;
     cout << "info for help" << endl;
     cout << endl;
