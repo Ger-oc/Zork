@@ -7,10 +7,13 @@
 
 using namespace std;
 #include "ZorkUL.h"
-#include "Room.h"
+#include "Bathroom.h"
+#include "Bedroom.h"
+#include "Office.h"
+#include "Hallway.h"
 #include "item.h"
 
-string creators = "Marle + Gerard";
+string creators = "Marle + Gerard, creators of this amazing zork game!";
 
 ZorkUL::ZorkUL() {
     createRooms();
@@ -25,8 +28,11 @@ void ZorkUL::createRooms() {
     hallway.numberOfItems();
     hallway.setExits(office, bathroom, NULL, bedroom);
     hallway.addItem((Item*)("lamp"));
-   */ hall = new Room("hallway");
+
     hall->numberOfItems();
+   */ 
+    //Hallway* hall = new Hallway();
+    hall = new Room("hallway");
     hall->addItem(new Item("umbrella stand,",1,1.0 ));
     hall->addItem(new Item("bust,",2,2.0));
     hall->addItem(new Item("book case,",3,3.0));
@@ -96,6 +102,7 @@ void ZorkUL::play() {
 }
 
 void ZorkUL::printWelcome() {
+    cout << creators << endl;
     cout << "start" << endl;
     cout << "info for help" << endl;
     cout << endl;
@@ -136,7 +143,7 @@ bool ZorkUL::processCommand(Command command) {
         else
         if (command.hasSecondWord()) {
             cout << "you're trying to take " + command.getSecondWord() << endl;
-            //int location = currentRoom->isItemInRoom(command.getSecondWord());
+            int location = currentRoom->isItemInRoom(command.getSecondWord());
             if (currentRoom->shortDescription() == "hall"){
              /*   for(int x = 0; x < 6; x++){
                     if(&itemsInRoom[x] == command.getSecondWord()){
