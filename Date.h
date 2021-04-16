@@ -19,6 +19,7 @@ private:
     //Date();
 
     string getDate();
+    string generateDate();
     //string to_string();
 };
 
