@@ -12,10 +12,13 @@ using namespace std;
 // first base class
 class Date {
 public:
-	friend class ZorkUL;
+
 
 private:
-    Date();
+    friend class ZorkUL;
+    //Date();
+
+    string getDate();
     //string to_string();
 };
 

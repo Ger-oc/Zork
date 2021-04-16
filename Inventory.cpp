@@ -4,22 +4,22 @@
 #include "CommandWords.h"
 #include "Room.h"
 
-//vector<string> Inventory::validItems;
-int count = 0;
+vector<string> validItems;
+//int count = 0;
 
 Inventory::Inventory() {
     // this creates the list of valid items a person can have on them
-    string validItems[15];
+    //string validItems[15];
 
 }
 
 string Inventory::takeItem(string *item) {
     int location = itemInInventory(*item);
     if (location != -1) {
-        //for (int x = 0; x < max; x++){
-            validItems[count] = item;
-            count ++;
-       // }
+        for (int x = 0; x < max; x++){
+            //validItems[x] = item;
+            //count ++;
+        }
         //validItems.erase(validItems.begin() + location);
         return *item;
     }

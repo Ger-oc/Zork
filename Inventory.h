@@ -18,9 +18,8 @@ class Inventory {
 
 private:
     static const int max = 15;
-    //static vector<string> validItems;
-    vector<string> ItemsOnPerson;
-    string *validItems[max];
+    vector<string> validItems;
+    //string *validItems[max];
 
 
 public:
