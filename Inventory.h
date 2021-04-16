@@ -17,13 +17,16 @@ using namespace std;
 class Inventory {
 
 private:
-    static vector<string> validItems;
+    static const int max = 15;
+    //static vector<string> validItems;
     vector<string> ItemsOnPerson;
+    string *validItems[max];
 
 
 public:
+
     Inventory();
-    string takeItem(string item);
+    string takeItem(string *item);
     void itemsList(int *items, int sizeofArray);
     void addItem(string item);
     int itemInInventory(string item);

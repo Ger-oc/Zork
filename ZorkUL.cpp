@@ -4,6 +4,7 @@
 
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 #include "ZorkUL.h"
@@ -28,23 +29,33 @@ void ZorkUL::createRooms() {
 
     Hallway* ha = new Hallway();
     ha->setExits(office, bathroom, NULL, bedroom );
-    ha->addItem(new Item("spoon", 1, 1.0));
-    ha->addItem(new Item ("knife", 1, 1.0));
+    ha->addItem(new Item("bust", 1, 1.0));
+    ha->addItem(new Item ("book case", 1, 1.0));
+    ha->addItem(new Item("umbrella stand", 1, 1.0));
+    ha->addItem(new Item("paper", 1, 1.0));
     ha->shortDescription("hallway");
     string test1 = ha->displayItem();
    // cout << test1 << endl;
 
     Bedroom* be = new Bedroom();
     be->setExits(NULL, NULL, hall, NULL);
-    be->addItem(new Item("umbrella stand,", 1, 1.0));
-    be->addItem(new Item("lamp", 1, 1.0));
+    be->addItem(new Item("magazine", 1, 1.0));
+    be->addItem(new Item("bed", 1, 1.0));
+    be->addItem(new Item("suitcase", 1, 1.0));
+    be->addItem(new Item("suncream", 1, 1.0));
+    be->addItem(new Item("dildo", 1, 1.0));
+    be->addItem(new Item("painting", 1, 1.0));
+    be->addItem(new Item("marbles", 1, 1.0));
     string test = be->displayItem();
     //cout << test << endl;
 
     Bathroom* ba = new Bathroom();
     ba->setExits(NULL, NULL, hall, NULL);
     ba->addItem(new Item("toilet", 1, 1.0));
-    ba->addItem(new Item ("gold", 1, 1.0));
+    ba->addItem(new Item ("gold bidate", 1, 1.0));
+    ba->addItem(new Item ("mirror", 1, 1.0));
+    ba->addItem(new Item ("screwdriver", 1, 1.0));
+    ba->addItem(new Item ("shampoo", 1, 1.0));
     string test2 = ba->displayItem();
    // cout << test2 << endl;
 
@@ -52,6 +63,8 @@ void ZorkUL::createRooms() {
     of->setExits(NULL, NULL, hall, NULL);
     of->addItem(new Item("money", 1, 1.0));
     of->addItem(new Item("cat",1, 1.0));
+    of->addItem(new Item("gold Buddha",1, 1.0));
+
     string test3 = of->displayItem();
     //cout << test3 << endl;
 
@@ -211,7 +224,11 @@ bool ZorkUL::processCommand(Command command) {
             cout << currentRoom->longDescription() << endl;
             inv->showItems();
         }
-
+       /* else if(commandWord.compare("inventory") == 0) {
+        for (int x = 0; x < validItems.size(); x++) {
+            cout << validItems.at(x) << endl;
+        }
+    }*/
 
     {
         /* if (!command.hasSecondWord()) {
