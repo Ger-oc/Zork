@@ -8,7 +8,7 @@ Item::Item (string inDescription, int inWeightGrams, float inValue/**, int weapo
     setWeight(inWeightGrams);
     value = inValue;
     /**weaponCheck(isWeapon);*/
-   }
+}
 
 
 
@@ -53,4 +53,5 @@ string Item::getLongDescription()
 float Item::getValue() {
     return 0;
 }
+
 

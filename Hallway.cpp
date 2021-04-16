@@ -4,6 +4,8 @@
 using namespace std;
 
 
-Hallway::Hallway(): Room() {
-	cout << "This is a Hallway" << endl;
+Hallway::Hallway() {
+    //cout << "This is a Hallway" << endl;
+
+
 }

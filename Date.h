@@ -13,9 +13,10 @@ using namespace std;
 class Date {
 public:
 	friend class ZorkUL;
+
 private:
-	Date();
-	//string to_string();
+    Date();
+    //string to_string();
 };
 
 

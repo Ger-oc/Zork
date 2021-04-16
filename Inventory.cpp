@@ -1,6 +1,9 @@
 //
 // Created on 05/04/2021.
 //
+//
+// Created on 05/04/2021.
+//
 
 #include "Inventory.h"
 #include "Command.h"
@@ -13,7 +16,8 @@ string items[15];
 int count = 1;
 
 Inventory::Inventory() {
-// this creates the list of valid items a person can have on them
+    // this creates the list of valid items a person can have on them
+
     if (validItems.empty()) {
         validItems.push_back("Magazine"); // from bed side locker
         validItems.push_back("bottle");  // from globe bar
@@ -29,31 +33,61 @@ Inventory::Inventory() {
         validItems.push_back("screwdriver"); // to remove mirror
         validItems.push_back("toothbrush");  // from bathroom vanity useless
         validItems.push_back("razor"); // from bathroom vanity useless
-        validItems.push_back("bust");      //
+        validItems.push_back("");      //
 
     }
 }
 
-/*string takeItem(string item){
-    if ()
+string Inventory::takeItem(string item) {
+    int location = itemInInventory(item);
+    if (location != -1) {
 
+        validItems.erase(validItems.begin() + location);
+        return item;
+    }
+    else {
+        cout << "item is not in inventory" << endl;
+        return "NOT_FOUND";
+    }
 }
-*/
-void Inventory::itemsList(int items[], int sizeofArray){
 
-    for (int x = 0 ; x < sizeofArray; x++){
+void Inventory::showItems() {
+    cout << "Inventory:" << endl;
+    for (int x = 0; x < validItems.size(); x++) {
+        cout << validItems[x] + " ";
+    }
+    cout << "" << endl;
+}
+
+int Inventory::itemInInventory(string item) {
+
+    for (int x = 0; x < validItems.size(); x++) {
+        if (item.compare(validItems[x]) == 0) {
+            return x;
+        }
+    }
+    return -1;
+}
+
+void Inventory::itemsList(int items[], int sizeofArray) {
+
+    for (int x = 0; x < sizeofArray; x++) {
         cout << items[x] << endl;
     }
+}
+
+void Inventory::addItem(string item) {
+    validItems.push_back(item);
 }
 
 
 /*string Command::getSecondWord(){     NOT WORKING
 
-    for (int i = 0; i < validItems.size(); ++i) {
+	for (int i = 0; i < validItems.size(); ++i) {
 
-        if(validItems[i].compare(getSecondWord()) == 0)
-            ItemsOnPerson.push_back(validItems[i]);
-    }
+		if(validItems[i].compare(getSecondWord()) == 0)
+			ItemsOnPerson.push_back(validItems[i]);
+	}
 }
 */
 

@@ -8,7 +8,7 @@ using namespace std;
 // first base class
 class Office : public Room{
 public:
-	Office();
+    Office();
 };
 
 

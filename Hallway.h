@@ -9,7 +9,7 @@ using namespace std;
 // first base class
 class Hallway : public Room{
 public:
-	Hallway();
+    Hallway();
 };
 
 

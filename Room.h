@@ -20,11 +20,11 @@ private:
 
 
 public:
-    Room();
     int numberOfItems();
     Room(string description);
     void setExits(Room *north, Room *east, Room *south, Room *west);
     string shortDescription();
+    /*void Room::testFunction();*/
     string longDescription();
     Room* nextRoom(string direction);
     void addItem(Item *inItem);

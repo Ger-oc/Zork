@@ -7,39 +7,42 @@
 
 using namespace std;
 #include "ZorkUL.h"
-#include "Bathroom.h"
-#include "Bedroom.h"
-#include "Office.h"
-#include "Hallway.h"
+#include "Room.h"
 #include "item.h"
-#include "Date.h"
+#include "Bedroom.h"
+#include "Inventory.h"
 
-string creators = "Marle + Gerard, creators of this amazing zork game!";
-Date timeNow;
+string creators = "Marle + Gerard";
+Inventory* inv;
 
 ZorkUL::ZorkUL() {
     createRooms();
+    inv = new Inventory();
 }
 
 
 void ZorkUL::createRooms() {
-    Room *hall , * bathroom, * bedroom, * office, * extra;
+    Room* hall, * bathroom, * bedroom, * office, * extra;
 
-/*    Room hallway;
-    hallway.shortDescription();
-    hallway.numberOfItems();
-    hallway.setExits(office, bathroom, NULL, bedroom);
-    hallway.addItem((Item*)("lamp"));
+    Bedroom* br = new Bedroom();
+    br->addItem(new Item("umbrella stand,", 1, 1.0));
+    string test = br->displayItem();
+    cout << "Test " + test << endl;
 
-    hall->numberOfItems();
-   */ 
-    //Hallway* hall = new Hallway();
+    /*    Room hallway;
+        hallway.shortDescription();
+        hallway.numberOfItems();
+        hallway.setExits(office, bathroom, NULL, bedroom);
+        hallway.addItem((Item*)("lamp"));
+       */
     hall = new Room("hallway");
-    hall->addItem(new Item("umbrella stand,",1,1.0 ));
-    hall->addItem(new Item("bust,",2,2.0));
-    hall->addItem(new Item("book case,",3,3.0));
-    hall->addItem(new Item("lamp,",4,4.0));
-    hall->addItem(new Item("grandfather clock.",5,5.0));
+    hall->numberOfItems();
+    hall->addItem(new Item("umbrella stand,", 1, 1.0));
+    hall->addItem(new Item("bust,", 2, 2.0));
+    hall->addItem(new Item("book case,", 3, 3.0));
+    hall->addItem(new Item("lamp,", 4, 4.0));
+    hall->addItem(new Item("grandfather clock.", 5, 5.0));
+    //hall->testFunction();
 
     bathroom = new Room("bathroom");
     bathroom->addItem(new Item("toilet,"));
@@ -52,25 +55,25 @@ void ZorkUL::createRooms() {
     bathroom->addItem(new Item("toothbrush."));
 
     bedroom = new Room("bedroom");
-    bedroom->addItem( new Item("bed,"));
-    bedroom->addItem( new Item("closet,"));
-    bedroom->addItem( new Item("big painting,"));
-    bedroom->addItem( new Item("globe bar,"));
-    bedroom->addItem( new Item("cabinet,"));
+    bedroom->addItem(new Item("bed,"));
+    bedroom->addItem(new Item("closet,"));
+    bedroom->addItem(new Item("big painting,"));
+    bedroom->addItem(new Item("globe bar,"));
+    bedroom->addItem(new Item("cabinet,"));
 
     office = new Room("office");
-    office->addItem( new Item("Gold Buddha."));
+    office->addItem(new Item("Gold Buddha."));
 
     extra = new Room("e");
-    extra->addItem(new Item("noting"));
+    extra->addItem(new Item("nothing"));
 
 
     //             (N, E, S, W)
-    hall->setExits(office, bathroom,NULL , bedroom);
+    hall->setExits(office, bathroom, NULL, bedroom);
     bathroom->setExits(NULL, NULL, hall, NULL);
     bedroom->setExits(NULL, NULL, hall, NULL);
     office->setExits(NULL, NULL, hall, NULL);
-  //  extra->setExits(NULL, NULL, NULL, NULL);
+    //  extra->setExits(NULL, NULL, NULL, NULL);
     /*f->setExits(NULL, g, a, h);
     g->setExits(NULL, NULL, NULL, f);
     h->setExits(NULL, f, NULL, NULL);
@@ -83,7 +86,7 @@ void ZorkUL::createRooms() {
  *  Main play routine.  Loops until end of play.
  */
 void ZorkUL::play() {
-//    Bedroom obj;
+    //    Bedroom obj;
     printWelcome();
 
     // Enter the main command loop.  Here we repeatedly read commands and
@@ -104,8 +107,6 @@ void ZorkUL::play() {
 }
 
 void ZorkUL::printWelcome() {
-    cout << creators << endl;
-    timeNow.date;
     cout << "start" << endl;
     cout << "info for help" << endl;
     cout << endl;
@@ -143,33 +144,46 @@ bool ZorkUL::processCommand(Command command) {
         if (!command.hasSecondWord()) {
             cout << "incomplete input" << endl;
         }
-        else
-        if (command.hasSecondWord()) {
-            cout << "you're trying to take " + command.getSecondWord() << endl;
-            int location = currentRoom->isItemInRoom(command.getSecondWord());
-            if (currentRoom->shortDescription() == "hall"){
-             /*   for(int x = 0; x < 6; x++){
-                    if(&itemsInRoom[x] == command.getSecondWord()){
-                        addItemToInventory();
-                    }
-                }
+        else {
+            string item = command.getSecondWord();
+            cout << "you're trying to take " + item << endl;
+            int location = currentRoom->isItemInRoom(item);
 
-                deletItem();
-
-*/
+            if (location != -1) {
+                inv->showItems();
+                cout << "Found " + item + ". Putting it in inventory." << endl;
+                inv->addItem(item);
+                inv->showItems();
+            }
+            else {
+                cout << "Cannot find " + item + " in this room." << endl;
             }
 
-            else
-                cout << "item is not in room" << endl;
-            //cout << "index number " << +location << endl;
             cout << endl;
             cout << currentRoom->longDescription() << endl;
         }
     }
 
     else if (commandWord.compare("put") == 0)
+        if (!command.hasSecondWord()) {
+            cout << "incomplete input" << endl;
+        }
+        else
+        {
+            inv->showItems();
 
+            string item = inv->takeItem(command.getSecondWord());
 
+            if (item != "NOT_FOUND") {
+                cout << "Took " + item << endl;
+                currentRoom->addItem(new Item(item));
+            }
+            else
+                cout << "Item is not here: " + item << endl;
+
+            cout << currentRoom->longDescription() << endl;
+            inv->showItems();
+        }
 
 
     {
@@ -205,6 +219,7 @@ void ZorkUL::goRoom(Command command) {
     }
 
     string direction = command.getSecondWord();
+    direction[0] = ::tolower(direction[0]);
 
     // Try to leave current room.
     Room* nextRoom = currentRoom->nextRoom(direction);
@@ -221,7 +236,7 @@ string ZorkUL::go(string direction) {
     //Make the direction lowercase
     //transform(direction.begin(), direction.end(), direction.begin(),:: tolower);
     //Move to the next room
-    Room *nextRoom = currentRoom->nextRoom(direction);
+    Room* nextRoom = currentRoom->nextRoom(direction);
     if (nextRoom == NULL)
         return ("direction null");
     else {
@@ -236,7 +251,7 @@ void ZorkUL::deletItem() {
 }
 
 /*void ZorkUL::addItemToInventory(string theItem) {
-    itemsinInventory.push_back(theItem);
+	itemsinInventory.push_back(theItem);
 
 
 }*/

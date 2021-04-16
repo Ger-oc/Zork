@@ -5,6 +5,6 @@
 using namespace std;
 
 
-Bathroom::Bathroom() {
-	cout << "This is a Bathroom" << endl;
+Bathroom::Bathroom() : Room(""){
+    cout << "This is a Bathroom" << endl;
 }

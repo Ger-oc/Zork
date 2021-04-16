@@ -10,7 +10,7 @@ using namespace std;
 // first base class
 class Bedroom : public Room {
 public:
-	Bedroom();
+    Bedroom();
 };
 
 

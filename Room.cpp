@@ -23,6 +23,10 @@ string Room::shortDescription() {
     return description;
 }
 
+/*void Room::testFunction() {
+    cout << "test test" << endl;
+}*/
+
 string Room::longDescription() {
     return "room = " + description + ".\n" + displayItem() + exitString();
 }

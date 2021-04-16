@@ -4,5 +4,5 @@
 using namespace std;
 
 Office::Office() {
-	cout << "This is a Office" << endl;
+    cout << "This is a Office" << endl;
 }
