@@ -31,6 +31,9 @@ public:
     string displayItem();
     int isItemInRoom(string inString);
     void removeItemFromRoom(int location);
+    void displayName();
+
+    string shortDescription(string X);
 };
 
 #endif

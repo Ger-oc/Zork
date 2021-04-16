@@ -3,6 +3,6 @@
 
 using namespace std;
 
-Office::Office() {
-    cout << "This is a Office" << endl;
-}
+Office::Office() : Room("Office") {
+   // cout << "This is the Office" << endl;
+};

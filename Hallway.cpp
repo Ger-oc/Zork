@@ -3,9 +3,6 @@
 
 using namespace std;
 
-
-Hallway::Hallway() {
-    //cout << "This is a Hallway" << endl;
-
-
-}
+Hallway::Hallway() : Room("Hallway") {
+    //cout << "This is the Hallway" << endl;
+};

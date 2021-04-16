@@ -27,26 +27,34 @@ void ZorkUL::createRooms() {
     Room* hall, * bathroom, * bedroom, * office, * extra;
 
     Hallway* ha = new Hallway();
+    ha->setExits(office, bathroom, NULL, bedroom );
     ha->addItem(new Item("spoon", 1, 1.0));
     ha->addItem(new Item ("knife", 1, 1.0));
+    ha->shortDescription("hallway");
     string test1 = ha->displayItem();
+   // cout << test1 << endl;
 
-    Bedroom* br = new Bedroom();
-    br->addItem(new Item("umbrella stand,", 1, 1.0));
-    br->addItem(new Item("lamp", 1, 1.0));
-    //br->setExit(NULL, NULL, hall, NULL);
-    string test = br->displayItem();
-    cout << "Test " + test << endl;
+    Bedroom* be = new Bedroom();
+    be->setExits(NULL, NULL, hall, NULL);
+    be->addItem(new Item("umbrella stand,", 1, 1.0));
+    be->addItem(new Item("lamp", 1, 1.0));
+    string test = be->displayItem();
+    //cout << test << endl;
 
     Bathroom* ba = new Bathroom();
+    ba->setExits(NULL, NULL, hall, NULL);
     ba->addItem(new Item("toilet", 1, 1.0));
     ba->addItem(new Item ("gold", 1, 1.0));
     string test2 = ba->displayItem();
+   // cout << test2 << endl;
 
     Office* of = new Office();
+    of->setExits(NULL, NULL, hall, NULL);
     of->addItem(new Item("money", 1, 1.0));
     of->addItem(new Item("cat",1, 1.0));
     string test3 = of->displayItem();
+    //cout << test3 << endl;
+
 
     /*    Room hallway;
         hallway.shortDescription();
@@ -78,27 +86,27 @@ void ZorkUL::createRooms() {
     bedroom->addItem(new Item("closet,"));
     bedroom->addItem(new Item("big painting,"));
     bedroom->addItem(new Item("globe bar,"));
-    bedroom->addItem(new Item("cabinet,"));*/
+    bedroom->addItem(new Item("cabinet,"));
 
     office = new Room("office");
     office->addItem(new Item("Gold Buddha."));
 
     extra = new Room("e");
-    extra->addItem(new Item("nothing"));
+    extra->addItem(new Item("nothing"));*/
 
 
     //             (N, E, S, W)
-    hall->setExits(office, bathroom, NULL, bedroom);
-    bathroom->setExits(NULL, NULL, hall, NULL);
+   // hall->setExits(office, bathroom, NULL, bedroom);
+   // bathroom->setExits(NULL, NULL, hall, NULL);
     //bedroom->setExits(NULL, NULL, hall, NULL);
-    office->setExits(NULL, NULL, hall, NULL);
+    //office->setExits(NULL, NULL, hall, NULL);
     //  extra->setExits(NULL, NULL, NULL, NULL);
     /*f->setExits(NULL, g, a, h);
     g->setExits(NULL, NULL, NULL, f);
     h->setExits(NULL, f, NULL, NULL);
     i->setExits(NULL, d, NULL, NULL);*/
 
-    currentRoom = hall;
+    currentRoom = ha;
 }
 
 /**

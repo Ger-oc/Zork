@@ -3,6 +3,6 @@
 
 using namespace std;
 
-Bedroom::Bedroom() : Room("") {
-    cout << "This is a Bedroom" << endl;
+Bedroom::Bedroom() : Room("BedRoom") {
+   // cout << "This is bed Bedroom" << endl;
 };

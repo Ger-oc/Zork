@@ -7,6 +7,8 @@ Room::Room(string description) {
 
 int doorCode = 8521;
 int& officeCode = doorCode;
+string X;
+
 
 void Room::setExits(Room *office, Room *bathroom, Room *hall, Room *bedroom) {
     if (office != NULL)
@@ -19,10 +21,13 @@ void Room::setExits(Room *office, Room *bathroom, Room *hall, Room *bedroom) {
         exits["bedroom"] = bedroom;
 }
 
-string Room::shortDescription() {
-    return description;
+string Room::shortDescription( string X) {
+    return X;
 }
 
+void Room::displayName() {
+    cout << X << endl;
+}
 /*void Room::testFunction() {
     cout << "test test" << endl;
 }*/

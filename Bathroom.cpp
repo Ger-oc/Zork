@@ -1,10 +1,8 @@
 #include "Bathroom.h"
-#include "Room.h"
 #include <iostream>
 
 using namespace std;
 
-
-Bathroom::Bathroom() : Room(""){
-    cout << "This is a Bathroom" << endl;
-}
+Bathroom::Bathroom() : Room("Bathroom"){
+   // cout << "This is the Bathroom" << endl;
+};
