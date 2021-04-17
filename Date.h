@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Date.h"
 #include "ZorkUL.h"
+#include "Room.h"
 
 using namespace std;
 

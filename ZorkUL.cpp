@@ -16,14 +16,16 @@ using namespace std;
 #include "item.h"
 #include "Inventory.h"
 
-string creators = "Marle + Gerard";
+string creators = "creators : Marle + Gerard";
 Inventory* inv;
 
 Date date;
 
 ZorkUL::ZorkUL() {
+    cout << "Today's date is: ";
     string test = date.getDate();
-    cout << test << endl;
+    cout << creators << endl;
+    //cout << test << endl;
     createRooms();
     inv = new Inventory();
 
@@ -31,101 +33,46 @@ ZorkUL::ZorkUL() {
 
 
 void ZorkUL::createRooms() {
-    Room* hall, * bathroom, * bedroom, * office, * extra = new Room("je moeder");
+    Room *hall, *bathroom, *bedroom, *office; // * extra = new Room("Hidden Room");
 
-    Hallway* ha = new Hallway();
-    ha->setExits(office, bathroom, NULL, bedroom );
-    ha->addItem(new Item("bust", 1, 1.0));
-    ha->addItem(new Item ("book case", 1, 1.0));
-    ha->addItem(new Item("umbrella stand", 1, 1.0));
-    ha->addItem(new Item("paper", 1, 1.0));
-    ha->shortDescription("hallway");
-    string test1 = ha->displayItem();
-   // cout << test1 << endl;
-
-    Bedroom* be = new Bedroom();
-    be->setExits(NULL, NULL, hall, NULL);
-    be->addItem(new Item("magazine", 1, 1.0));
-    be->addItem(new Item("bed", 1, 1.0));
-    be->addItem(new Item("suitcase", 1, 1.0));
-    be->addItem(new Item("suncream", 1, 1.0));
-    be->addItem(new Item("dildo", 1, 1.0));
-    be->addItem(new Item("painting", 1, 1.0));
-    be->addItem(new Item("marbles", 1, 1.0));
-    string test = be->displayItem();
-    //cout << test << endl;
-
-    Bathroom* ba = new Bathroom();
-    ba->setExits(NULL, NULL, hall, NULL);
-    ba->addItem(new Item("toilet", 1, 1.0));
-    ba->addItem(new Item ("gold bidate", 1, 1.0));
-    ba->addItem(new Item ("mirror", 1, 1.0));
-    ba->addItem(new Item ("screwdriver", 1, 1.0));
-    ba->addItem(new Item ("shampoo", 1, 1.0));
-    string test2 = ba->displayItem();
-   // cout << test2 << endl;
-
-    Office* of = new Office();
-    of->setExits(NULL, NULL, hall, NULL);
-    of->addItem(new Item("money", 1, 1.0));
-    of->addItem(new Item("cat",1, 1.0));
-    of->addItem(new Item("gold Buddha",1, 1.0));
-
-    string test3 = of->displayItem();
-    //cout << test3 << endl;
-
-
-    /*    Room hallway;
-        hallway.shortDescription();
-        hallway.numberOfItems();
-        hallway.setExits(office, bathroom, NULL, bedroom);
-        hallway.addItem((Item*)("lamp"));
-       */
-    /*hall = new Room("hallway");
+    hall = new Room("hall");
     hall->numberOfItems();
-    hall->addItem(new Item("umbrella stand,", 1, 1.0));
-    hall->addItem(new Item("bust,", 2, 2.0));
-    hall->addItem(new Item("book case,", 3, 3.0));
-    hall->addItem(new Item("lamp,", 4, 4.0));
-    hall->addItem(new Item("grandfather clock.", 5, 5.0));
-    //hall->testFunction();
+    hall->shortDescription("hall");
+    hall->nextRoom("north");
+    hall->addItem(new Item("bust"));
+    hall->addItem(new Item("book case"));
+    hall->addItem(new Item("umbrella stand"));
+    hall->addItem(new Item("paper"));
 
     bathroom = new Room("bathroom");
-    bathroom->addItem(new Item("toilet,"));
-    bathroom->addItem(new Item("gold bidet,"));
-    bathroom->addItem(new Item("mirror,"));
-    bathroom->addItem(new Item("vanity,"));
-    bathroom->addItem(new Item("shower,"));
-    bathroom->addItem(new Item("wall switch,"));
-    bathroom->addItem(new Item("pull cord."));
-    bathroom->addItem(new Item("toothbrush."));
+    bathroom->addItem(new Item("toilet"));
+    bathroom->addItem(new Item("gold bidet"));
+    bathroom->addItem(new Item("mirror"));
+    bathroom->addItem(new Item("screwdriver"));
+    bathroom->addItem(new Item("shampoo"));
 
     bedroom = new Room("bedroom");
-    bedroom->addItem(new Item("bed,"));
-    bedroom->addItem(new Item("closet,"));
-    bedroom->addItem(new Item("big painting,"));
-    bedroom->addItem(new Item("globe bar,"));
-    bedroom->addItem(new Item("cabinet,"));
+    bedroom->addItem(new Item("magazine"));
+    bedroom->addItem(new Item("bed"));
+    bedroom->addItem(new Item("suitcase"));
+    bedroom->addItem(new Item("suncream"));
+    bedroom->addItem(new Item("painting"));
+    bedroom->addItem(new Item("marbles"));
 
     office = new Room("office");
-    office->addItem(new Item("Gold Buddha."));
-
-    extra = new Room("e");
-    extra->addItem(new Item("nothing"));*/
-
+    office->addItem(new Item("gold Buddha"));
+    office->addItem(new Item("cash"));
+    office->addItem(new Item("cat"));
 
     //             (N, E, S, W)
-   // hall->setExits(office, bathroom, NULL, bedroom);
-   // bathroom->setExits(NULL, NULL, hall, NULL);
-    //bedroom->setExits(NULL, NULL, hall, NULL);
-    //office->setExits(NULL, NULL, hall, NULL);
-    //  extra->setExits(NULL, NULL, NULL, NULL);
-    /*f->setExits(NULL, g, a, h);
-    g->setExits(NULL, NULL, NULL, f);
-    h->setExits(NULL, f, NULL, NULL);
-    i->setExits(NULL, d, NULL, NULL);*/
+    hall->setExits(office, bathroom, NULL, bedroom);
+    bathroom->setExits(NULL, NULL, hall, NULL);
+    bedroom->setExits(NULL, NULL, hall, NULL);
+    office->setExits(NULL, NULL, hall, NULL);
 
-    currentRoom = ha;
+
+
+   currentRoom = hall;
 }
 
 /**
@@ -283,6 +230,18 @@ void ZorkUL::goRoom(Command command) {
     }
 }
 
+/**void ZorkUL::goRoom(Command command) {
+    if (!command.hasSecondWord()){
+        cout << "incomplete input" << endl;
+        return;
+    }
+    string direction = command.getSecondWord();
+    if(direction == "office"){
+        switch (north) {
+
+        }
+    }
+}*/
 string ZorkUL::go(string direction) {
     //Make the direction lowercase
     //transform(direction.begin(), direction.end(), direction.begin(),:: tolower);

@@ -20,6 +20,12 @@ void Room::setExits(Room *office, Room *bathroom, Room *hall, Room *bedroom) {
     if (bedroom != NULL)
         exits["bedroom"] = bedroom;
 }
+/*void Room::setExits1(int , int, int, int) {
+    if(currentlocation == 1){
+        test =
+    }
+
+}*/
 
 string Room::shortDescription( string X) {
     return X;
@@ -110,4 +116,9 @@ void  Room::removeItemFromRoom(int location){
     else{
         cout<<"no item in this position"<<endl;
     }
+}
+
+int Room::currentRoom(int room){
+    currentlocation = room;
+    return currentlocation;
 }
