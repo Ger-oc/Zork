@@ -1,8 +1,3 @@
-//
-// Created by spike on 13/04/2021.
-//
-
-
 #include <iostream>
 #include <vector>
 
@@ -15,7 +10,7 @@ using namespace std;
 #include "Hallway.h"
 #include "item.h"
 #include "Inventory.h"
-
+const int MAX = 20;
 string creators = "creators : Marle + Gerard";
 Inventory* inv;
 
@@ -121,23 +116,18 @@ bool ZorkUL::processCommand(Command command) {
     if (commandWord.compare("info") == 0)
         printHelp();
 
-    else if (commandWord.compare("map") == 0)
-    {
+    else if (commandWord.compare("map") == 0) {
         cout << "              [Office]                 " << endl;
         cout << "                  |                    " << endl;
         cout << "                  |                    " << endl;
         cout << "[Bedroom] --- [Hallway] --- [Bathroom] " << endl;
-    }
-
-    else if (commandWord.compare("go") == 0)
+    } else if (commandWord.compare("go") == 0)
         goRoom(command);
 
-    else if (commandWord.compare("take") == 0)
-    {
+    else if (commandWord.compare("take") == 0) {
         if (!command.hasSecondWord()) {
             cout << "incomplete input" << endl;
-        }
-        else {
+        } else {
             string item = command.getSecondWord();
             cout << "you're trying to take " + item << endl;
             int location = currentRoom->isItemInRoom(item);
@@ -147,22 +137,17 @@ bool ZorkUL::processCommand(Command command) {
                 cout << "Found " + item + ". Putting it in inventory." << endl;
                 inv->addItem(item);
                 inv->showItems();
-            }
-            else {
+            } else {
                 cout << "Cannot find " + item + " in this room." << endl;
             }
 
             cout << endl;
             cout << currentRoom->longDescription() << endl;
         }
-    }
-
-    else if (commandWord.compare("put") == 0)
+    } else if (commandWord.compare("put") == 0)
         if (!command.hasSecondWord()) {
             cout << "incomplete input" << endl;
-        }
-        else
-        {
+        } else {
             inv->showItems();
 
             //string item = inv->takeItem(command.getSecondWord());
@@ -171,20 +156,25 @@ bool ZorkUL::processCommand(Command command) {
             if (item != "NOT_FOUND") {
                 cout << "Took " + item << endl;
                 currentRoom->addItem(new Item(item));
-            }
-            else
+            } else
                 cout << "Item is not here: " + item << endl;
 
             cout << currentRoom->longDescription() << endl;
             inv->showItems();
         }
-       /* else if(commandWord.compare("inventory") == 0) {
-        for (int x = 0; x < validItems.size(); x++) {
-            cout << validItems.at(x) << endl;
+    else if (commandWord.compare("inventory") == 0) {
+        for (int x = 0; x < MAX; x++) {
+            cout << " ";
         }
-    }*/
-
-    {
+        cout << "\n";
+    } else if (commandWord.compare("quit") == 0) {
+        if (command.hasSecondWord())
+            cout << "overdefined input" << endl;
+        else
+            return true;
+    }
+    return false;
+}
         /* if (!command.hasSecondWord()) {
              cout << "incomplete input"<< endl;
              }
@@ -193,16 +183,9 @@ bool ZorkUL::processCommand(Command command) {
                  cout << "you're adding " + command.getSecondWord() << endl;
                  itemsInRoom.push_Back;
              }
-         }/*
+         }
 
-     else if (commandWord.compare("quit") == 0) {
-         if (command.hasSecondWord())
-             cout << "overdefined input" << endl;
-         else
-             return true; /**signal to quit*/
-    }
-    return false;
-}
+
 /** COMMANDS **/
 void ZorkUL::printHelp() {
     cout << "valid inputs are; " << endl;

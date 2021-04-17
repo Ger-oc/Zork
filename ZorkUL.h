@@ -23,7 +23,7 @@ private:
     void printHelp();
     void goRoom(Command command);
     void createItems();
-    void displayItems();
+    void displayItems(string);
     void deletItem();
 
 public:
