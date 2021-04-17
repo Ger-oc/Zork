@@ -24,7 +24,7 @@ private:
     void goRoom(Command command);
     void createItems();
     void displayItems(string);
-    void deletItem();
+
 
 public:
     ZorkUL();

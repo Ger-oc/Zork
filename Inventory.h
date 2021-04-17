@@ -26,6 +26,7 @@ private:
 public:
 
     Inventory();
+    ~Inventory();
     string takeItem(string item);
     void itemsList(int *items, int sizeofArray);
     void addItem(string item);

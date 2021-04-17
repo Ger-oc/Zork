@@ -54,4 +54,6 @@ float Item::getValue() {
     return 0;
 }
 
+Item::~Item(){
 
+}

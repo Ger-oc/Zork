@@ -74,7 +74,6 @@ void ZorkUL::createRooms() {
  *  Main play routine.  Loops until end of play.
  */
 void ZorkUL::play() {
-    //    Bedroom obj;
     printWelcome();
 
     // Enter the main command loop.  Here we repeatedly read commands and
@@ -235,13 +234,3 @@ string ZorkUL::go(string direction) {
     }
 }
 
-void ZorkUL::deletItem() {
-
-
-}
-
-/*void ZorkUL::addItemToInventory(string theItem) {
-	itemsinInventory.push_back(theItem);
-
-
-}*/

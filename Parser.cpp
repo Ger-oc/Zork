@@ -53,3 +53,7 @@ Command* Parser::getCommand() {
 void Parser::showCommands() {
     commands->showAll();
 }
+
+Parser::~Parser() {
+
+}
