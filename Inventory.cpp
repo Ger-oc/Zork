@@ -54,3 +54,14 @@ void Inventory::addItem(string item) {
     validItems.push_back(item);
 }
 
+string Inventory::hiddenItems() {
+   string secretItems[] = {"apple", "gameboy", "ice cream", "rug", "key", "laptop", "phone", "underpants", "pot", "pan", "cat food"};
+    return 0;
+}
+
+void Inventory::showHiddenItems() {
+    for(unsigned int i = 13; i < 13; ++i ){
+        cout << secretItems[i] << " ";
+    }
+    cout<< "working"<< endl;
+}

@@ -20,6 +20,9 @@ private:
    // static const int max = 15;
     vector<string> validItems;
     vector<string> ItemsOnPerson;
+    string *secretItems[12] = {(string *) "apple", (string *) "gameboy", (string *) "ice cream", (string *) "rug",
+                               (string *) "key", (string *) "laptop", (string *) "phone", (string *) "underpants",
+                               (string *) "pot", (string *) "pan", (string *) "cat food"};
 
 
 
@@ -32,7 +35,8 @@ public:
     void addItem(string item);
     int itemInInventory(string item);
     void showItems();
-
+    string hiddenItems();
+    void showHiddenItems();
 };
 
 

@@ -160,10 +160,15 @@ bool ZorkUL::processCommand(Command command) {
             inv->showItems();
         }
     else if (commandWord.compare("inventory") == 0) {
-            inv->showItems();
+        inv->showItems();
 
         cout << "\n";
-    } else if (commandWord.compare("quit") == 0) {
+    }
+    else if(commandWord.compare("examine") == 0) {
+        inv->showHiddenItems();
+        }
+
+     else if (commandWord.compare("quit") == 0) {
         if (command.hasSecondWord())
             cout << "overdefined input" << endl;
         else
