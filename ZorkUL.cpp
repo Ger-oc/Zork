@@ -7,6 +7,7 @@
 #include <vector>
 
 using namespace std;
+#include "Date.h"
 #include "ZorkUL.h"
 #include "Office.h"
 #include "Bathroom.h"
@@ -18,14 +19,19 @@ using namespace std;
 string creators = "Marle + Gerard";
 Inventory* inv;
 
+Date date;
+
 ZorkUL::ZorkUL() {
+    string test = date.getDate();
+    cout << test << endl;
     createRooms();
     inv = new Inventory();
+
 }
 
 
 void ZorkUL::createRooms() {
-    Room* hall, * bathroom, * bedroom, * office, * extra;
+    Room* hall, * bathroom, * bedroom, * office, * extra = new Room("je moeder");
 
     Hallway* ha = new Hallway();
     ha->setExits(office, bathroom, NULL, bedroom );
@@ -212,7 +218,8 @@ bool ZorkUL::processCommand(Command command) {
         {
             inv->showItems();
 
-            string item = inv->takeItem(command.getSecondWord());
+            //string item = inv->takeItem(command.getSecondWord());
+            string item = "";
 
             if (item != "NOT_FOUND") {
                 cout << "Took " + item << endl;

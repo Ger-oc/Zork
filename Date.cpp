@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Date::Date() {
+string Date::generateDate() {
 
     struct date {
         unsigned int tm_mday : 1;
@@ -30,10 +30,16 @@ Date::Date() {
     string year = to_string(1900 + ltm->tm_year);
     string date = (day + "-" + month + "-" + year);
     cout << date << endl;
+    return date;
 };
 
 /*string Date::to_string(){
     return date;
 }
 */
+
+string Date::getDate() {
+    string test = generateDate();
+    return test;
+}
 
