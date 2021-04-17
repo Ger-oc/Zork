@@ -149,8 +149,6 @@ bool ZorkUL::processCommand(Command command) {
             cout << "incomplete input" << endl;
         } else {
             inv->showItems();
-
-            //string item = inv->takeItem(command.getSecondWord());
             string item = "";
 
             if (item != "NOT_FOUND") {
@@ -163,9 +161,8 @@ bool ZorkUL::processCommand(Command command) {
             inv->showItems();
         }
     else if (commandWord.compare("inventory") == 0) {
-        for (int x = 0; x < MAX; x++) {
-            cout << " ";
-        }
+            inv->showItems();
+
         cout << "\n";
     } else if (commandWord.compare("quit") == 0) {
         if (command.hasSecondWord())
