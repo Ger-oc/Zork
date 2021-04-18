@@ -10,6 +10,7 @@ using namespace std;
 #include "Hallway.h"
 #include "item.h"
 #include "Inventory.h"
+#define pepe "Today's date is: ";
 const int MAX = 20;
 string creators = "creators : Marle + Gerard";
 Inventory* inv;
@@ -17,7 +18,7 @@ Inventory* inv;
 Date date;
 
 ZorkUL::ZorkUL() {
-    cout << "Today's date is: ";
+    cout << pepe;
     string test = date.getDate();
     cout << creators << endl;
     //cout << test << endl;
