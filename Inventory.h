@@ -20,9 +20,9 @@ private:
    // static const int max = 15;
     vector<string> validItems;
     vector<string> ItemsOnPerson;
-    string *secretItems[12] = {(string *) "apple", (string *) "gameboy", (string *) "ice cream", (string *) "rug",
-                               (string *) "key", (string *) "laptop", (string *) "phone", (string *) "underpants",
-                               (string *) "pot", (string *) "pan", (string *) "cat food"};
+    const char *secretItems[11] = {"apple", "gameboy", "ice cream", "rug",
+                               "key", "laptop", "phone", "underpants",
+                               "pot", "pan", "cat food"};
 
 
 

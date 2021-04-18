@@ -60,8 +60,9 @@ string Inventory::hiddenItems() {
 }
 
 void Inventory::showHiddenItems() {
-    for(unsigned int i = 13; i < 13; ++i ){
-        cout << secretItems[i] << " ";
+    for( int i = 11; i < 11; ++i ){
+        cout << secretItems[i-1] << " ";
+
     }
     cout<< "working"<< endl;
 }
