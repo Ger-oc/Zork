@@ -12,7 +12,7 @@ using namespace std;
 #include "Inventory.h"
 #define pepe "Today's date is: ";
 const int MAX = 20;
-string creators = "creators : Marle + Gerard";
+string creators = "creators : Marle 20288506 + Gerard 19192118";
 Inventory* inv;
 
 Date date;
@@ -177,15 +177,6 @@ bool ZorkUL::processCommand(Command command) {
     }
     return false;
 }
-        /* if (!command.hasSecondWord()) {
-             cout << "incomplete input"<< endl;
-             }
-             else
-                 if (command.hasSecondWord()) {
-                 cout << "you're adding " + command.getSecondWord() << endl;
-                 itemsInRoom.push_Back;
-             }
-         }
 
 
 /** COMMANDS **/
@@ -215,18 +206,6 @@ void ZorkUL::goRoom(Command command) {
     }
 }
 
-/**void ZorkUL::goRoom(Command command) {
-    if (!command.hasSecondWord()){
-        cout << "incomplete input" << endl;
-        return;
-    }
-    string direction = command.getSecondWord();
-    if(direction == "office"){
-        switch (north) {
-
-        }
-    }
-}*/
 string ZorkUL::go(string direction) {
     //Make the direction lowercase
     //transform(direction.begin(), direction.end(), direction.begin(),:: tolower);

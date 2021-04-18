@@ -2,7 +2,7 @@
 #include <array>
 string hall[3] = {"lamp", "bust", "umbrella"};
 
-// hall 1-100  bathroom 101-200 bedroom 201-300 office 301 -400
+
 Item::Item (string inDescription, int inWeightGrams, float inValue/**, int weaponCheck*/) {
     description = inDescription;
     setWeight(inWeightGrams);
